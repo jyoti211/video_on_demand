@@ -1,0 +1,8 @@
+heeeeee
+{{videosList}}
+fuck off
+<div class="slide" ng-repeat="media in videosList.result">
+	{{media}}
+  <img ng-if="media.type == 'image'" ng-src="./img/slides/{{media.src}}" />
+  <video ng-if="media.type == 'video'" ng-src="{{media.src}}"></video>
+</div>

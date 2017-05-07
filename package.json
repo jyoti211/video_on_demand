@@ -1,0 +1,19 @@
+{
+  "name": "video_on_demand",
+  "version": "1.0.0",
+  "description": "video on demand",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyoti211/video_on_demand.git"
+  },
+  "author": "jyoti kumari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyoti211/video_on_demand/issues"
+  },
+  "homepage": "https://github.com/jyoti211/video_on_demand#readme"
+}

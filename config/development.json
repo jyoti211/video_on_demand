@@ -1,0 +1,6 @@
+{
+	"dbURL" :"mongodb://jyoti_accedo_test:jyoti123@ds063186.mlab.com:63186/accedo",
+	"sessionSecret"	:"jyotiisgreat",
+	
+	"host":"http://localhost:3000"
+}
