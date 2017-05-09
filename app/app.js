@@ -22,8 +22,15 @@
                 url: '/videos',
                 templateUrl: 'videos/index.html',
                 controller: 'Videos.IndexController',
-                controllerAs: 'vm',
+                controllerAs: 'videosList',
                 data: { activeTab: 'videos' }
+            })
+            .state('videosList', {
+                url: '/videosList',
+                templateUrl: 'videos/listAll.html',
+                controller: 'Videos.IndexController',
+                controllerAs: 'videosList',
+                data: { activeTab: 'videosList' }
             })
             .state('account', {
                 url: '/account',
