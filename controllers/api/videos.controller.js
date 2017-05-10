@@ -6,7 +6,8 @@ var rest = require('restler');
  
 // routes
 router.get('/allVideos', getAllVideos);
- 
+router.put('/addFavVideo/:_id',addFavVideo);
+
 module.exports = router;
  
 function getAllVideos(req, res) {
@@ -20,13 +21,23 @@ function getAllVideos(req, res) {
       	result = {'status':200,'result': result};
         
       }
-      res.header('Access-Control-Allow-Origin', "*");
-      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
       res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-
       res.send(result);
     });
-   
-    
-        
+}
+
+function addFavVideo(req,res){
+  var userId = req.user.sub;
+    if (req.params._id !== userId) {
+        // can only update own account
+        return res.status(401).send('You can only update your own account');
+    }
+ 
+    videoService.addFavVideo(userId, req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
 }
