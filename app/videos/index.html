@@ -1,11 +1,22 @@
-
-<div class="video_div_class" ng-repeat="link_url in videosList.links_url" ng-bind-html="link_url">
+<div>
+<div  ng-repeat="link_url in videosList.links_url" ng-bind-html="link_url">
 	{{link_url}}
+</div>
+<div>
+	<div  ng-repeat="video in videosList.result" >
+	<input type='checkbox' id={{video.id}} ng-model='selectedList[video.id]'/>
+    <label for={{video.id}}>{{video.id}}</label> 
+    </div>
+<div>
+</div>
 
 </div>
 
+
+<h2>Selected</h2>
+  <p>{{selectedList|json}}</p>
 <div>
-<input type="button" value = "Add to Favourite">
+<input type="button" value = "Add to Favourite" ng-click='addToFav()'>
 </div>
 
 
