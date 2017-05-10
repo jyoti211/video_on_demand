@@ -9,11 +9,16 @@
         var service = {};
  
         service.GetAllVideos = GetAllVideos;
+        service.addFavVideo = addFavVideo;
  
         return service;
  
         function GetAllVideos() {
             return $http.get('/api/videos/allVideos').then(handleSuccess, handleError);
+        }
+
+        function addFavVideo(user_id,videolist){
+             return $http.put('/api/videos/addFavVideo/'+ user_id,videolist).then(handleSuccess, handleError);
         }
 
         function handleSuccess(res) {
