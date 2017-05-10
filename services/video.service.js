@@ -1,23 +1,35 @@
 var config = require('config/config.json');
-var rest = require('restler');
+var Q = require('q');
+var mongo = require('mongoskin');
+var db = mongo.db(config.connectionString, { native_parser: true });
+db.bind('users');
+
  
 var service = {};
  
-service.getAllVideos = getAllVideos;
+service.addFavVideo = addFavVideo;
  
 module.exports = service;
  
-function getAllVideos() {
-    rest.get('https://demo2697834.mockable.io/movies').on('complete', function(result) {
-      if (result instanceof Error) {
-        console.log('Error:', result.message);
-        this.retry(5000);
-        res = {'status':5000,'result': result.message};
-      } else {
-      	res = {'status':200,'result': result};
-        
-      }
-    });
+function addFavVideo(_id, userParam) {
+	console.log(userParam);
+    var deferred = Q.defer();
+ 	console.log(JSON.stringify(userParam));
     
-
+        // fields to update
+        var set = {
+            fav_video: {'_video_id':userParam}
+        };
+ 
+       
+        db.users.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err);
+ 
+                deferred.resolve();
+            });
+ 
+    return deferred.promise;
 }
