@@ -10,6 +10,7 @@
  
         service.GetAllVideos = GetAllVideos;
         service.addFavVideo = addFavVideo;
+        service.getFavVideoList = getFavVideoList;
  
         return service;
  
@@ -19,6 +20,11 @@
 
         function addFavVideo(user_id,videolist){
              return $http.put('/api/videos/addFavVideo/'+ user_id,videolist).then(handleSuccess, handleError);
+        }
+
+         function getFavVideoList(user_id){
+            console.log(user_id);
+             return $http.get('/api/videos/getFavVideoList/'+ user_id).then(handleSuccess, handleError);
         }
 
         function handleSuccess(res) {

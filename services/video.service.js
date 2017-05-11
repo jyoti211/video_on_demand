@@ -8,6 +8,7 @@ db.bind('users');
 var service = {};
  
 service.addFavVideo = addFavVideo;
+service.getFavVideoById = getFavVideoById;
  
 module.exports = service;
  
@@ -32,4 +33,24 @@ function addFavVideo(_id, userParam) {
             });
  
     return deferred.promise;
+}
+
+function getFavVideoById(_id) {
+    var deferred = Q.defer();
+    console.log(_id);
+
+    db.users.find({"_id":ObjectId(_id)},{fav_video:1}, function (err, favVideos) {
+        console.log(favVideos);
+        /*if (err) deferred.reject(err);
+ 
+        if (user) {
+            // return user (without hashed password)
+            deferred.resolve(_.omit(user, 'hash'));
+        } else {
+            // user not found
+            deferred.resolve();
+        }*/
+    });
+ 
+    //return deferred.promise;
 }

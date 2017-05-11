@@ -7,6 +7,7 @@ var rest = require('restler');
 // routes
 router.get('/allVideos', getAllVideos);
 router.put('/addFavVideo/:_id',addFavVideo);
+router.get('/getFavVideoList/:_id', getFavVideoList);
 
 module.exports = router;
  
@@ -36,6 +37,27 @@ function addFavVideo(req,res){
     videoService.addFavVideo(userId, req.body)
         .then(function () {
             res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getFavVideoList(req, res) {
+  var userId = req.user.sub;
+    if (req.params._id !== userId) {
+        // can only update own account
+        return res.status(401).send('You can only update your own account');
+    }
+  
+    videoService.getFavVideoById(req.user.sub)
+        .then(function (favVideos) {
+          console.log(favVideos);
+            if (favVideos) {
+                res.send(favVideos);
+            } else {
+                res.sendStatus(404);
+            }
         })
         .catch(function (err) {
             res.status(400).send(err);

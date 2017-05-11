@@ -14,7 +14,7 @@
             <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
             <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
             <li ng-class="{active: activeTab === 'videos'}"><a ui-sref="videos">Videos</a></li>
-            <li ng-class="{active: activeTab === 'videosList'}" ><a ng-click="videosList.GetAllVideos()">Videos List</a></li>  
+            <li ng-class="{active: activeTab === 'fav_videosList'}" ><a ui-sref="fav_videosList">Fav Videos List</a></li>  
             <li><a href="/login" target="_self">Logout</a></li>
         </ul>
         <div class="flash-message" ng-if="flash">
@@ -41,5 +41,6 @@
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
     <script src="videos/index.controller.js"></script>
+    <script src="subscribed_videos/index.controller.js"></script>
 </body>
 </html>

@@ -15,7 +15,8 @@
           $scope.selectedList = {};
           videosList.favlist = [];
         videosList.user = null;
-
+        videosList.getFavVideoList = getFavVideoList;
+       
         initController();
  
         function initController() {
@@ -59,6 +60,14 @@
                 FlashService.Error(error);
               });
         };
+
+
+        function getFavVideoList(){
+          console.log("fav clicked");
+            VideoService.getFavVideoList().then(function(favVideoList){
+                    videosList.favVideoList = favVideoList;
+                });
+        }
 
 
     }

@@ -25,6 +25,13 @@
                 controllerAs: 'videosList',
                 data: { activeTab: 'videos' }
             })
+             .state('fav_videosList', {
+                url: '/fav_videosList',
+                templateUrl: 'subscribed_videos/index.html',
+                controller: 'subscribed_videos.IndexController',
+                controllerAs: 'videosList',
+                data: { activeTab: 'fav_videosList' }
+            })
             .state('account', {
                 url: '/account',
                 templateUrl: 'account/index.html',
